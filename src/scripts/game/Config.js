@@ -39,4 +39,15 @@ export const Config = {
             max: 200
         }
     },
+    score: {
+        x: 10,
+        y: 10,
+        anchor: 0,
+        style: {
+            fontFamily: "Verdana",
+            fontWeight: "bold",
+            fontSize: 44,
+            fill: ["#FF7F50"]
+        }
+    },
 };
