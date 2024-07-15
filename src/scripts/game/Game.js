@@ -1,6 +1,7 @@
 import { App } from "../system/App.js";
 import { Scene } from "../system/Scene.js";
 import { Background } from "./Background.js";
+import { Hero } from "./Hero.js";
 import { Platform } from "./Platform.js";
 
 export class Game extends Scene {
@@ -11,6 +12,12 @@ export class Game extends Scene {
             cols: 6,
             x: 200
         });
+        this.createHero();
+    }
+
+    createHero() {
+        this.hero = new Hero();
+        this.container.addChild(this.hero.sprite);
     }
 
     createPlatform(data) {
