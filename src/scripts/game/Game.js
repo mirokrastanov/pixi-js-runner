@@ -21,15 +21,20 @@ export class Game extends Scene {
         const colliders = [event.pairs[0].bodyA, event.pairs[0].bodyB];
         const hero = colliders.find(body => body.gameHero);
         const platform = colliders.find(body => body.gamePlatform);
+        const diamond = colliders.find(body => body.gameDiamond);
 
         if (hero && platform) {
             this.hero.stayOnPlatform(platform.gamePlatform);
         }
+
+        if (hero && diamond) {
+            this.hero.collectDiamond(diamond.gameDiamond);
+        }
     }
 
     createPlatforms() {
-        this.platfroms = new Platforms();
-        this.container.addChild(this.platfroms.container);
+        this.platforms = new Platforms();
+        this.container.addChild(this.platforms.container);
     }
 
     createHero() {
@@ -48,6 +53,6 @@ export class Game extends Scene {
 
     update(dt) {
         this.bg.update(dt);
-        this.platfroms.update(dt);
+        this.platforms.update(dt);
     }
 }

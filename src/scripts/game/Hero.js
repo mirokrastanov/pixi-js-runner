@@ -6,10 +6,11 @@ export class Hero {
     constructor() {
         this.createSprite();
         this.createBody();
-        App.app.ticker.add(this.update.bind(this));
+        App.app.ticker.add(this.update, this);
         this.dy = App.config.hero.jumpSpeed;
         this.maxJumps = App.config.hero.maxJumps;
         this.jumpIndex = 0;
+        this.score = 0;
     }
 
     stayOnPlatform(platform) {
@@ -48,5 +49,12 @@ export class Hero {
         this.sprite.loop = true;
         this.sprite.animationSpeed = 0.1;
         this.sprite.play();
+    }
+
+    collectDiamond(diamond) {
+        ++this.score;
+        Matter.World.remove(App.physics.world, diamond.body);
+        diamond.sprite.destroy();
+        diamond.sprite = null;
     }
 }
