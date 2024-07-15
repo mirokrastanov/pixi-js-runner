@@ -1,8 +1,11 @@
 import { Game } from "./Game.js";
 import { Tools } from "../system/Tools.js";
 
+const assetsContext = require.context('./../../sprites/', true, /\.(mp3|png|jpe?g)$/);
+const assets = Tools.massiveRequire(assetsContext);
+
 export const Config = {
-    loader: Tools.massiveRequire(require["context"]('./../../sprites/', true, /\.(mp3|png|jpe?g)$/)),
+    loader: assets,
     scenes: {
         "Game": Game
     },
@@ -12,11 +15,11 @@ export const Config = {
             x: 350,
             y: 550
         },
-        jumpSpeed: 11,
+        jumpSpeed: 12,
         maxJumps: 2,
     },
     platforms: {
-        moveSpeed: -4.5,
+        moveSpeed: -6.5,
         ranges: {
             rows: {
                 min: 2,
