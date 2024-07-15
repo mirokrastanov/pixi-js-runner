@@ -10,13 +10,13 @@ export const Config = {
     hero: {
         position: {
             x: 350,
-            y: 150
+            y: 550
         },
-        jumpSpeed: 15,
+        jumpSpeed: 12,
         maxJumps: 2,
     },
     platforms: {
-        moveSpeed: -6.5,
+        moveSpeed: -5.5,
         ranges: {
             rows: {
                 min: 2,
@@ -31,5 +31,12 @@ export const Config = {
                 max: 200
             }
         },
+    },
+    diamonds: {
+        chance: 0.4,
+        offset: {
+            min: 100,
+            max: 200
+        }
     },
 };
