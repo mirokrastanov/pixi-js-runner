@@ -1,5 +1,5 @@
-import { Game } from "./Game";
-import { Tools } from "../system/Tools";
+import { Game } from "./Game.js";
+import { Tools } from "../system/Tools.js";
 
 export const Config = {
     bgSpeed: 2,
