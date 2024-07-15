@@ -15,6 +15,14 @@ export class Platform {
         this.createBody();
     }
 
+    move() {
+        if (this.body) {
+            Matter.Body.setPosition(this.body, { x: this.body.position.x + this.dx, y: this.body.position.y });
+            this.container.x = this.body.position.x - this.width / 2;
+            this.container.y = this.body.position.y - this.height / 2;
+        }
+    }
+
     createBody() {
         // create a physical body
         this.body = Matter.Bodies.rectangle(this.width / 2 + this.container.x, this.height / 2 + this.container.y, this.width, this.height, { friction: 0, isStatic: true });

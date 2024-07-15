@@ -23,6 +23,7 @@ export class Platforms {
         if (this.current.container.x + this.current.container.width < window.innerWidth) {
             this.createPlatform(this.randomData);
         }
+        this.platforms.forEach(platform => platform.move());
     }
 
     get randomData() {
