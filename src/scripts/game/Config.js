@@ -11,7 +11,9 @@ export const Config = {
         position: {
             x: 350,
             y: 580
-        }
+        },
+        jumpSpeed: 15,
+        maxJumps: 2,
     },
     platforms: {
         ranges: {
