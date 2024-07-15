@@ -1,6 +1,7 @@
 import * as PIXI from "pixi.js";
 import { App } from "../system/App.js";
 import { Platform } from "./Platform.js";
+import { Diamond } from "./Diamond.js";
 
 export class Platforms {
     constructor() {
@@ -12,6 +13,24 @@ export class Platforms {
             x: 200
         });
     }
+
+    createDiamonds() {
+        const y = App.config.diamonds.offset.min + Math.random() * (App.config.diamonds.offset.max - App.config.diamonds.offset.min);
+
+        for (let i = 0; i < this.cols; i++) {
+            if (Math.random() < App.config.diamonds.chance) {
+                this.createDiamond(this.tileSize * i, -y);
+            }
+        }
+    }
+
+    createDiamond(x, y) {
+        const diamond = new Diamond(x, y);
+        this.container.addChild(diamond.sprite);
+        diamond.createBody();
+        this.diamonds.push(diamond);
+    }
+
     createPlatform(data) {
         const platform = new Platform(data.rows, data.cols, data.x);
         this.container.addChild(platform.container);
