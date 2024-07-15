@@ -1,5 +1,5 @@
 import * as PIXI from "pixi.js";
-import { App } from "./App";
+import { App } from "./App.js";
 
 export class Scene {
     constructor() {

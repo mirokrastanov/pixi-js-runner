@@ -27,6 +27,11 @@ export class Platforms {
         this.platforms.forEach(platform => platform.move());
     }
 
+    destroy() {
+        this.platforms.forEach(platform => platform.destroy());
+        this.container.destroy();
+    }
+
     get randomData() {
         this.ranges = App.config.platforms.ranges;
         let data = { rows: 0, cols: 0, x: 0 };

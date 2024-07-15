@@ -12,11 +12,11 @@ export const Config = {
             x: 350,
             y: 550
         },
-        jumpSpeed: 12,
+        jumpSpeed: 11,
         maxJumps: 2,
     },
     platforms: {
-        moveSpeed: -5.5,
+        moveSpeed: -4.5,
         ranges: {
             rows: {
                 min: 2,

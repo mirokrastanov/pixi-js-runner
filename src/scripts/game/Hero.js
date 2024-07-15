@@ -36,6 +36,15 @@ export class Hero {
     update() {
         this.sprite.x = this.body.position.x - this.sprite.width / 2;
         this.sprite.y = this.body.position.y - this.sprite.height / 2;
+        if (this.sprite.y > window.innerHeight) {
+            this.sprite.emit("die");
+        }
+    }
+
+    destroy() {
+        App.app.ticker.remove(this.update, this);
+        Matter.World.add(App.physics.world, this.body);
+        this.sprite.destroy();
     }
 
     createSprite() {
@@ -54,8 +63,10 @@ export class Hero {
     collectDiamond(diamond) {
         ++this.score;
         Matter.World.remove(App.physics.world, diamond.body);
-        diamond.sprite.destroy();
-        diamond.sprite = null;
+        if (diamond.sprite) {
+            diamond.sprite.destroy();
+            diamond.sprite = null;
+        }
         this.sprite.emit("score");
     }
 }
