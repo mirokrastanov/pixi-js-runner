@@ -10,12 +10,13 @@ export const Config = {
     hero: {
         position: {
             x: 350,
-            y: 580
+            y: 150
         },
         jumpSpeed: 15,
         maxJumps: 2,
     },
     platforms: {
+        moveSpeed: -6.5,
         ranges: {
             rows: {
                 min: 2,
@@ -30,6 +31,5 @@ export const Config = {
                 max: 200
             }
         },
-        moveSpeed: -1.5,
     },
 };
