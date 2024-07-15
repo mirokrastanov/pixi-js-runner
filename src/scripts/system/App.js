@@ -1,8 +1,9 @@
 import * as PIXI from "pixi.js";
+import * as Matter from 'matter-js';
 import { gsap } from "gsap";
 import { PixiPlugin } from "gsap/PixiPlugin";
-import { Loader } from "./Loader";
-import { ScenesManager } from "./ScenesManager";
+import { Loader } from "./Loader.js";
+import { ScenesManager } from "./ScenesManager.js";
 
 class Application {
     run(config) {
@@ -11,7 +12,7 @@ class Application {
 
         this.config = config;
 
-        this.app = new PIXI.Application({resizeTo: window});
+        this.app = new PIXI.Application({ resizeTo: window });
         document.body.appendChild(this.app.view);
 
         this.scenes = new ScenesManager();
@@ -20,6 +21,14 @@ class Application {
 
         this.loader = new Loader(this.app.loader, this.config);
         this.loader.preload().then(() => this.start());
+
+        this.createPhysics();
+    }
+
+    createPhysics() {
+        this.physics = Matter.Engine.create();
+        const runner = Matter.Runner.create();
+        Matter.Runner.run(runner, this.physics);
     }
 
     res(key) {
